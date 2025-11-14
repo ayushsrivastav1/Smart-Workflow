@@ -1,9 +1,10 @@
 import React from 'react'
 
-function NewTask({data}) {
+function NewTask({ data }) {
   return (
-    <div className='flex-shrink-0 h-full w-[300px] p-5 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl shadow-lg text-white'>
-      <div className='flex justify-between items-center'>
+    <div className='flex-shrink-0 h-full w-full sm:w-[300px] p-5 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl shadow-lg text-white'>
+
+      <div className='flex flex-wrap sm:flex-nowrap justify-between items-center gap-2'>
         <h3 className='bg-orange-600 text-xs font-semibold px-3 py-1 rounded-lg shadow-md'>
           {data.category}
         </h3>
@@ -11,13 +12,17 @@ function NewTask({data}) {
       </div>
 
       <h2 className='mt-5 text-xl font-bold'>{data.taskTitle}</h2>
-      <p className='text-sm mt-2 opacity-90'>{data.taskDescription}</p>
 
-      <div className='mt-5'>
-        <button className='bg-indigo-600 hover:bg-indigo-700 py-1 px-3 text-sm rounded-md shadow-md'>
+      <p className='text-sm mt-2 opacity-90'>
+        {data.taskDescription}
+      </p>
+
+      <div className='mt-5 flex flex-wrap sm:flex-nowrap'>
+        <button className='w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 py-1 px-3 text-sm rounded-md shadow-md'>
           Accept Task
         </button>
       </div>
+
     </div>
   )
 }

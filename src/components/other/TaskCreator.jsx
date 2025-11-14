@@ -48,15 +48,18 @@ function TaskCreator() {
 
   return (
     <div className="p-5 bg-[#2A1E4D] mt-5 rounded-lg">
+
       <form onSubmit={handleSubmit} className="flex flex-wrap gap-5">
-        <div className="w-1/2">
+
+        {/* LEFT SECTION */}
+        <div className="w-full sm:w-1/2">
           <label className="block text-sm text-gray-300">Task Title</label>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="e.g. Build UI"
-            className="w-4/5 mb-3 p-2 rounded bg-transparent border border-gray-500 text-sm"
+            className="w-full sm:w-4/5 mb-3 p-2 rounded bg-transparent border border-gray-500 text-sm"
           />
 
           <label className="block text-sm text-gray-300">Date</label>
@@ -64,7 +67,7 @@ function TaskCreator() {
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            className="w-4/5 mb-3 p-2 rounded bg-transparent border border-gray-500 text-sm"
+            className="w-full sm:w-4/5 mb-3 p-2 rounded bg-transparent border border-gray-500 text-sm"
           />
 
           <label className="block text-sm text-gray-300">Assign To</label>
@@ -73,7 +76,7 @@ function TaskCreator() {
             value={assignTo}
             onChange={(e) => setAssignTo(e.target.value)}
             placeholder="employee name"
-            className="w-4/5 mb-3 p-2 rounded bg-transparent border border-gray-500 text-sm"
+            className="w-full sm:w-4/5 mb-3 p-2 rounded bg-transparent border border-gray-500 text-sm"
           />
 
           <label className="block text-sm text-gray-300">Category</label>
@@ -82,23 +85,27 @@ function TaskCreator() {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             placeholder="design, dev etc"
-            className="w-4/5 mb-3 p-2 rounded bg-transparent border border-gray-500 text-sm"
+            className="w-full sm:w-4/5 mb-3 p-2 rounded bg-transparent border border-gray-500 text-sm"
           />
         </div>
 
-        <div className="w-2/5">
+        {/* RIGHT SECTION */}
+        <div className="w-full sm:w-2/5">
           <label className="block text-sm text-gray-300">Description</label>
           <textarea
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
             className="w-full h-47 p-2 rounded bg-transparent border border-gray-400 text-sm"
           />
+
           <button className="w-full mt-4 bg-[#6C63FF] hover:bg-[#A78BFA] py-2 rounded text-white text-sm shadow-md transition-colors duration-200">
             Create Task
           </button>
         </div>
+
       </form>
     </div>
+
   );
 }
 
