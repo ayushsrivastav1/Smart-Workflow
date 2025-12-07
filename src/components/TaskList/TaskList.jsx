@@ -1,31 +1,21 @@
-import React from 'react'
-import AcceptTask from './AcceptTask'
-import CompleteTask from './CompleteTask'
-import NewTask from './NewTask'
-import FailedTask from './FailedTask'
+import React from "react"
+import AcceptTask from "./AcceptTask"
+import NewTask from "./NewTask"
+import CompleteTask from "./CompleteTask"
+import FailedTask from "./FailedTask"
 
 function TaskList({ data }) {
   return (
-    <div
-      id='tasklist'
-      className='h-auto sm:h-[55%] overflow-x-auto flex flex-wrap sm:flex-nowrap items-center gap-6 justify-start w-full mt-10 p-4 rounded-xl bg-[#2A1E4D] shadow-md'
-    >
-      {data.tasks.map((elem, rdx) => {
-        if (elem.active) {
-          return <AcceptTask key={rdx} data={elem} />
-        }
-        if (elem.newTask) {
-          return <NewTask key={rdx} data={elem} />
-        }
-        if (elem.completed) {
-          return <CompleteTask key={rdx} data={elem} />
-        }
-        if (elem.failed) {
-          return <FailedTask key={rdx} data={elem} />
-        }
+    <div className='h-auto sm:h-[55%] overflow-x-auto flex flex-wrap sm:flex-nowrap items-center gap-6 justify-start w-full mt-10 p-4 rounded-xl bg-[#2A1E4D] shadow-md'>
+      {data.tasks.map((task, idx) => {
+        const taskProps = { data: task, employeeId: data.id }
+        if (task.active) return <AcceptTask key={idx} {...taskProps} />
+        if (task.newTask) return <NewTask key={idx} {...taskProps} />
+        if (task.completed) return <CompleteTask key={idx} {...taskProps} />
+        if (task.failed) return <FailedTask key={idx} {...taskProps} />
+        return null
       })}
     </div>
-
   )
 }
 

@@ -1,6 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useContext } from 'react'
+import { AuthContext } from '../../context/AuthContextProvider'
 
-function NewTask({ data }) {
+function NewTask({ data, employeeId }) {
+
+  const [userData, setUserData] = useContext(AuthContext);
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  const handleAccept = () => {
+    setIsDisabled(true)
+
+    const updated = userData.map(emp => {
+      if (emp.id === employeeId) {
+        return {
+          ...emp,
+          taskCounts: {
+            ...emp.taskCounts,
+            active: emp.taskCounts.active + 1,     
+            newTask: emp.taskCounts.newTask - 1  
+          }
+        }
+      }
+      return emp;
+    });
+
+    setUserData(updated);
+    localStorage.setItem("employees", JSON.stringify(updated));
+  };
+
+
   return (
     <div className='flex-shrink-0 h-full w-full sm:w-[300px] p-5 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl shadow-lg text-white'>
 
@@ -18,7 +46,11 @@ function NewTask({ data }) {
       </p>
 
       <div className='mt-5 flex flex-wrap sm:flex-nowrap'>
-        <button className='w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 py-1 px-3 text-sm rounded-md shadow-md'>
+        <button
+          onClick={handleAccept}
+          disabled={isDisabled}
+          className='w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 py-1 px-3 text-sm rounded-md shadow-md'
+        >
           Accept Task
         </button>
       </div>
