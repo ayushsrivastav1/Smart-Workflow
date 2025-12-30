@@ -30,10 +30,10 @@ function NewTask({ data, employeeId }) {
 
 
   return (
-    <div className='flex-shrink-0 h-full w-full sm:w-[300px] p-5 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl shadow-lg text-white'>
+    <div className='flex-shrink-0 h-full w-full sm:w-[300px] p-5 bg-gradient-to-r from-indigo-600 to-indigo-500 rounded-xl shadow-lg text-white'>
 
       <div className='flex flex-wrap sm:flex-nowrap justify-between items-center gap-2'>
-        <h3 className='bg-orange-600 text-xs font-semibold px-3 py-1 rounded-lg shadow-md'>
+        <h3 className='bg-red-600 text-xs font-semibold px-3 py-1 rounded-lg shadow-md'>
           {data.category}
         </h3>
         <h4 className='text-sm opacity-80'>{data.taskDate}</h4>
@@ -49,7 +49,7 @@ function NewTask({ data, employeeId }) {
         <button
           onClick={handleAccept}
           disabled={isDisabled}
-          className='w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 py-1 px-3 text-sm rounded-md shadow-md'
+          className='w-full sm:w-auto bg-indigo-700 hover:bg-indigo-800 font-semibold py-2 px-4 text-sm rounded-md shadow-md'
         >
           Accept Task
         </button>
